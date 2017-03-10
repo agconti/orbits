@@ -45,7 +45,7 @@ class App extends Component {
     this.scene.add(this.ambientLight)
   }
   createGlobe() {
-    const globe = new THREE.SphereGeometry(20, 16, 22)
+    const globe = new THREE.SphereGeometry(20, 16, 50)
     this.scene.add(new THREE.Mesh(globe, new THREE.MeshLambertMaterial({ reflectivity: 0.8, color: 'white' })))
   }
   onWindowResize() {
