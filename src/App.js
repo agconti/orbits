@@ -21,7 +21,7 @@ class App extends Component {
 
     this.renderer.setPixelRatio(window.devicePixelRatio ? window.devicePixelRatio : 1)
     this.renderer.setSize(window.innerWidth, window.innerHeight)
-    window.addEventListener('resize', this.onWindowResize.bind(this), false)
+    window.addEventListener('resize', this.onWindowResize.bind(this), false )
     this.camera.position.z = 100
 
     this.createLights()
@@ -43,10 +43,10 @@ class App extends Component {
 
     this.lights = this.lightColors.map(createLight)
     this.lights.forEach(light => this.scene.add(light))
-    this.scene.add(new THREE.AmbientLight(0x222222))
+    this.scene.add(new THREE.AmbientLight('black'))
   }
   createGlobe() {
-    const globe = new THREE.SphereGeometry(20, 16, 22)
+    const globe = new THREE.SphereGeometry(20, 16, 50)
     this.scene.add(new THREE.Mesh(globe, new THREE.MeshLambertMaterial({ reflectivity: 0.8, color: 'white' })))
   }
   onWindowResize() {
@@ -65,9 +65,9 @@ class App extends Component {
     this.lights.forEach((light, index)=> {
       const [xMod, yMod, zMod] = this.lightOrbitModifiers[index]
 
-      light.position.x = Math.sin(time * xMod) * 40
-      light.position.y = Math.cos(time * yMod) * 50
-      light.position.z = Math.cos(time * zMod) * 40
+      light.position.x = Math.sin(time * xMod ) * 40
+      light.position.y = Math.cos(time * yMod ) * 50
+      light.position.z = Math.cos(time * zMod ) * 40
     })
     this.renderer.render(this.scene, this.camera)
   }
